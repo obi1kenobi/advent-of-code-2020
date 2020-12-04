@@ -1,4 +1,7 @@
-use std::{collections::{HashMap, HashSet}, fs};
+use std::{
+    collections::{HashMap, HashSet},
+    fs,
+};
 
 fn main() {
     let contents = fs::read_to_string("./input.txt").unwrap();
@@ -7,20 +10,27 @@ fn main() {
     let numbers_in_file = contents
         .trim()
         .split("\n")
-        .map( |x| x.parse::<i32>().unwrap())
+        .map(|x| x.parse::<i32>().unwrap())
         .collect::<Vec<i32>>();
 
     let (pair_num_a, pair_num_b) = find_pair_sum(target_sum, &numbers_in_file).unwrap();
-    println!("{} * {} = {}", pair_num_a, pair_num_b, pair_num_a * pair_num_b);
+    println!(
+        "{} * {} = {}",
+        pair_num_a,
+        pair_num_b,
+        pair_num_a * pair_num_b
+    );
 
     let (triplet_num_a, triplet_num_b, triplet_num_c) =
         find_triplet_sum(target_sum, &numbers_in_file).unwrap();
     println!(
         "{} * {} * {} = {}",
-        triplet_num_a, triplet_num_b, triplet_num_c, triplet_num_a * triplet_num_b * triplet_num_c
+        triplet_num_a,
+        triplet_num_b,
+        triplet_num_c,
+        triplet_num_a * triplet_num_b * triplet_num_c
     );
 }
-
 
 fn find_pair_sum(target_sum: i32, numbers: &Vec<i32>) -> Option<(i32, i32)> {
     let mut seen_numbers: HashSet<i32> = HashSet::new();
@@ -35,7 +45,6 @@ fn find_pair_sum(target_sum: i32, numbers: &Vec<i32>) -> Option<(i32, i32)> {
     None
 }
 
-
 fn find_triplet_sum(target_sum: i32, numbers: &Vec<i32>) -> Option<(i32, i32, i32)> {
     let mut remainder_parts: HashMap<i32, HashSet<i32>> = HashMap::new();
 
@@ -45,9 +54,7 @@ fn find_triplet_sum(target_sum: i32, numbers: &Vec<i32>) -> Option<(i32, i32, i3
             let current_sum = num_a + num_b;
 
             let remainder = target_sum - current_sum;
-            let parts = remainder_parts
-                .entry(remainder)
-                .or_insert(HashSet::new());
+            let parts = remainder_parts.entry(remainder).or_insert(HashSet::new());
             parts.insert(*num_a);
         }
     }

@@ -2,8 +2,9 @@ use std::fs;
 
 fn main() {
     let contents = fs::read_to_string(
-        "/mnt/c/Users/predrag/Dropbox/Documents/Code/advent-of-code-2020/day2/input.txt")
-        .unwrap();
+        "/mnt/c/Users/predrag/Dropbox/Documents/Code/advent-of-code-2020/day2/input.txt",
+    )
+    .unwrap();
 
     solve_part1(&contents);
     solve_part2(&contents);
@@ -49,7 +50,9 @@ fn solve_part2(contents: &String) {
         let character_spec = elements[1].chars().next().unwrap();
 
         let positions: Vec<i32> = positions_spec
-            .split("-").map(|x| x.parse().unwrap()).collect();
+            .split("-")
+            .map(|x| x.parse().unwrap())
+            .collect();
         assert!(positions.len() == 2);
 
         let mut has_invalid_chars = false;

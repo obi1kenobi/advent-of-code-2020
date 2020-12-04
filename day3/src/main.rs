@@ -2,12 +2,14 @@ use std::fs;
 
 fn main() {
     let contents = fs::read_to_string(
-        "/mnt/c/Users/predrag/Dropbox/Documents/Code/advent-of-code-2020/day3/input.txt")
-        .unwrap();
+        "/mnt/c/Users/predrag/Dropbox/Documents/Code/advent-of-code-2020/day3/input.txt",
+    )
+    .unwrap();
 
     let map: Vec<Vec<char>> = contents
         .trim()
-        .split("\n").map(|x| x.chars().collect())
+        .split("\n")
+        .map(|x| x.chars().collect())
         .collect();
 
     println!("{}", solve(&map, 1, 3));
@@ -19,7 +21,11 @@ fn main() {
     let slope_2_1 = solve(&map, 2, 1);
     println!(
         "{} * {} * {} * {} * {} = {}",
-        slope_1_1, slope_1_3, slope_1_5, slope_1_7, slope_2_1,
+        slope_1_1,
+        slope_1_3,
+        slope_1_5,
+        slope_1_7,
+        slope_2_1,
         slope_1_1 * slope_1_3 * slope_1_5 * slope_1_7 * slope_2_1,
     )
 }
