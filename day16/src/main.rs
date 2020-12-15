@@ -11,6 +11,10 @@ fn main() {
     println!("{}", solve_part1(&lines));
 }
 
-fn solve_part1(lines: &Vec<&str>) -> i32 {
+fn solve_part1(lines: &Vec<&str>) -> i64 {
+    0
+}
+
+fn solve_part2(lines: &Vec<&str>) -> i64 {
     0
 }
